@@ -1,30 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Register";
+﻿@model RegisterWM
+
+@{
+    ViewData["Title"] = "Kayıt Sayfası";
 }
 
 
 
 
 <div class="row">
-    <div class="col">
-        @ViewData["Title"]
+    <div class="col-4 offset-4">
+        <h1 class="display-4 text-center"> @ViewData["Title"]</h1>
     </div>
 
 </div>
 
 <div class="row">
-    <div class="col">
-        <form>
-            <div class="form-group mb-4">
-                <label class="form-label">Kullanıcı Adı</label>
-                <input class="form-control" placeholder="kullanıcı adı giriniz" />
+    <div class="col-4 offset-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="kullaniciAdi" class="form-control" placeholder="Kullanıcı adı giriniz" />
+                <span asp-validation-for="kullaniciAdi" class="text-danger"></span>
             </div>
-            <div class="form-group mb-4">
-                <label class="form-label">Şifre</label>
-                <input class="form-control" placeholder="şifrenizi giriniz" />
+            <div class="form-group mb-3">
+                <label asp-for="sifre" class="form-label">Şifre</label>
+                <input asp-for="sifre" type="password" class="form-control" placeholder="Şifre giriniz" />
+                <span asp-validation-for="sifre" class="text-danger"></span>
             </div>
-            <div class="form-group d-grid mb-4">
-                <button type="submit" class="btn btn-primary d-block">Giriş Yap</button>
+            <div class="form-group mb-3">
+                <label asp-for="yenidensifre" class="form-label">Şifreyi yeniden giriniz</label>
+                <input asp-for="yenidensifre" type="password" class="form-control" placeholder="Şifre giriniz" />
+                <span asp-validation-for="yenidensifre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group d-grid mb-3">
+                <button type="submit" class="btn btn-primary d-block">Kayıt Ol</button>
             </div>
 
         </form>

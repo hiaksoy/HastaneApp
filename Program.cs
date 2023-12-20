@@ -1,7 +1,13 @@
+using HastaneApp.Entity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddDbContext<DatabaseContext>(opts =>)
+    {
+    opts.UseSqlServer("Server=localhost";)
+}
 
 var app = builder.Build();
 

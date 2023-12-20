@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HastaneApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneApp.Controllers
 {
@@ -7,6 +8,17 @@ namespace HastaneApp.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginWM model)
+        {
+            if (ModelState.IsValid)
+            {
+                //giriş işlemleri
+            }
+
+            return View(model);
         }
         public IActionResult Register()
         {
