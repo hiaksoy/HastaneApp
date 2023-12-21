@@ -1,13 +1,17 @@
 using HastaneApp.Entity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-builder.Services.AddDbContext<DatabaseContext>(opts =>)
-    {
-    opts.UseSqlServer("Server=localhost";)
-}
+builder.Services.AddDbContext<DatabaseContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    //opts.UseLazyLoadingProxies();
+      
+
+});
 
 var app = builder.Build();
 
@@ -17,6 +21,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
+
 
 app.UseRouting();
 

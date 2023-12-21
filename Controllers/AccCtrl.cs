@@ -24,6 +24,19 @@ namespace HastaneApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Register(RegisterWM model)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                //register işlemleri
+            }
+            return View();
+        }
+
         public IActionResult Profile()
         {
             return View();
