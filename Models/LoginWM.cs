@@ -13,5 +13,7 @@ namespace HastaneApp.Models
         [MinLength(8,ErrorMessage ="Şifre 8 karakterden az olamaz")]
         [MaxLength(20,ErrorMessage ="Şifre 20 Karakterden fazla olamaz")]
         public string sifre { get; set; }
+
+
     }
 }
