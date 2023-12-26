@@ -15,5 +15,6 @@ namespace HastaneApp.Models
         public string sifre { get; set; }
 
 
+
     }
 }
