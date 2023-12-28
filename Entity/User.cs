@@ -11,8 +11,8 @@ namespace HastaneApp.Entity
         [Key]
         public Guid Id { get; set; }
 
-        [StringLength(50)]
-        public string adSoyad { get; set; }
+      /*  [StringLength(50)]
+        public string adSoyad { get; set; }*/
 
         [Required]
         [StringLength(50)]

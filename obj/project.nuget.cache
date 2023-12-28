@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mxFyKs1wpM4ctRKad1mKcj/0GC8WP0dTPH5/1eIBeeIa3LKSuLsKHv/uSWqQ3AiZ4Fo/3sDF4h3/M+E6ENjoZA==",
+  "dgSpecHash": "fUT4z6r5Pe670Dr+4I++sBNyvTPGqtqd6HaEHmltq0001+AZq1gM2MuK6uXzoltI7peB1cBf7dYhHqKGkZAXtQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Halil İbrahim\\Source\\Repos\\HastaneApp\\HastaneApp\\HastaneApp.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,8 @@
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\netcore.encrypt\\2.1.1\\netcore.encrypt.2.1.1.nupkg.sha512",
+    "C:\\Users\\Halil İbrahim\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Halil İbrahim\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
