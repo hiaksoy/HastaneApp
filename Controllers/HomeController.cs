@@ -1,4 +1,5 @@
 ﻿using HastaneApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,13 +7,8 @@ namespace HastaneApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+       
+        
         public IActionResult Index()
         {
             return View();
@@ -22,6 +18,13 @@ namespace HastaneApp.Controllers
         {
             return View();
         }
+
+    
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

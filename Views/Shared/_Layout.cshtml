@@ -25,12 +25,41 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item ms-auto">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Login">Giriş Yap</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Register">Kayıt Ol</a>
-                        </li>
+                        
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                </li>
+                            }
+
+
+
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Profile">@User.FindFirst("kullaniciAdi").Value</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Logout">Çıkış Yap</a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Login">Giriş Yap</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AccCtrl" asp-action="Register">Kayıt Ol</a>
+                            </li>
+                        }
+
+                        
+
+
+
+
                     </ul>
                 </div>
             </div>

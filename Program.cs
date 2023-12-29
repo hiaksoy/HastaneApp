@@ -1,4 +1,5 @@
 using HastaneApp.Entity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,18 @@ builder.Services.AddDbContext<DatabaseContext>(opts =>
     
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(opts =>
+{
+    opts.Cookie.Name = "HastaneApp.auth";
+    opts.ExpireTimeSpan = TimeSpan.FromDays(1);
+    opts.SlidingExpiration = false;
+    opts.LoginPath = "/AccCtrl/Login";
+    opts.LogoutPath = "/AccCtrl/Logout";
+    opts.AccessDeniedPath = "/Home/AccessDenied";
+ 
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,9 +35,8 @@ app.UseStaticFiles();
 
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

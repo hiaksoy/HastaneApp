@@ -11,9 +11,6 @@ namespace HastaneApp.Entity
         [Key]
         public Guid Id { get; set; }
 
-      /*  [StringLength(50)]
-        public string adSoyad { get; set; }*/
-
         [Required]
         [StringLength(50)]
         public string kullaniciAdi { get; set; }
@@ -22,8 +19,11 @@ namespace HastaneApp.Entity
         [StringLength(100)]
         public string sifre { get; set; }
         
-        public bool Kitli { get; set; } = false;
         public DateTime Olusturmazamani { get; set; } = DateTime.Now;
+
+        [Required]
+        [StringLength(50)]
+        public string Role { get; set; } = "user";
 
     }
 
