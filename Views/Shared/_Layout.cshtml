@@ -28,6 +28,7 @@
                         
                         @if(User.Identity.IsAuthenticated)
                         {
+
                             if (User.IsInRole("admin"))
                             {
                                 <li class="nav-item">
