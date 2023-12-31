@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Profil Sayfası";
+}
+
+
+
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 text-center"> @ViewData["Title"]</h1>
+    </div>
+
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-4">
+        <div class="mb-4">
+            <div asp-validation-summary="All" class="text-danger small"></div>
+        </div>
+        <form method="post" asp-action="UsernameUpdate">
+            <div class="form-group">
+                <label class="form-label">Kullanıcı Adını Değiştir</label>
+                <div class="input-group">
+                    <input name="kullaniciAdi" type="text" class="form-control" placeholder="Kullanıcı Adı" value="@ViewData["kullaniciAdi"]" />
+                    <button class="btn btn-outline-secondary" type="submit">Değiştir</button>
+                </div>
+                @if (ViewData["result"] != null && ViewData["result"] == "usernameChanged")
+                {
+                    <span class="text-success small">Kullanıcı Adı Başarılı bir şekilde değiştirildi.</span>
+                }
+            </div>
+        </form>
+
+        <form method="post" asp-action="PasswordUpdate">
+            <div class="form-group">
+                <label class="form-label">Şifreni Değiştir</label>
+                <div class="input-group">
+                    <input name="sifre" type="password" class="form-control" placeholder="Şifre en az 8 hane olmalı" />
+                    <button class="btn btn-outline-secondary" type="submit">Değiştir</button>
+                </div>
+                @if (ViewData["result"] != null && ViewData["result"] == "passChanged")
+                {
+                    <span class="text-success small">Şifre Başarılı bir şekilde değiştirildi.</span>
+                }
+            </div>
+        </form>
+
+    </div>
+
+</div>

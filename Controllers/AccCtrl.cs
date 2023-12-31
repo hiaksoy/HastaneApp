@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.Encrypt.Extensions;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace HastaneApp.Controllers
@@ -34,9 +35,7 @@ namespace HastaneApp.Controllers
             //giriş işlemleri
             if (ModelState.IsValid)
             {
-                string md5Sifre = _configuration.GetValue<string>("AppSettings:MD5Sifre");
-                string gizlisifre = model.sifre + md5Sifre;
-                string yenisifre = gizlisifre.MD5();
+                string yenisifre = MD5sifre(model.sifre);
 
                 User user = _databaseContext.Kullanici.SingleOrDefault(x => x.kullaniciAdi.ToLower() == model.kullaniciAdi.ToLower() && x.sifre == yenisifre);
 
@@ -63,6 +62,14 @@ namespace HastaneApp.Controllers
             return View(model);
         }
 
+        private string MD5sifre(string s)
+        {
+            string md5Sifre = _configuration.GetValue<string>("AppSettings:MD5Sifre");
+            string gizlisifre = s + md5Sifre;
+            string yenisifre = gizlisifre.MD5();
+            return yenisifre;
+        }
+
         [AllowAnonymous]
         public IActionResult Register()
         {
@@ -85,10 +92,7 @@ namespace HastaneApp.Controllers
                 }
 
                 //kriptolanmış şifre oluşturma
-                string md5Sifre = _configuration.GetValue<string>("AppSettings:MD5Sifre");
-                string gizlisifre = model.sifre + md5Sifre;
-                string yenisifre = gizlisifre.MD5();
-
+                string yenisifre = MD5sifre(model.sifre);
 
 
                 User user = new User()
@@ -115,8 +119,58 @@ namespace HastaneApp.Controllers
 
         public IActionResult Profile()
         {
+            DataLoader();
+
             return View();
         }
+
+        private void DataLoader()
+        {
+            Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            User user = _databaseContext.Kullanici.SingleOrDefault(x => x.Id == userid);
+
+            ViewData["kullaniciAdi"] = user.kullaniciAdi;
+        }
+
+        [HttpPost]
+        public IActionResult UsernameUpdate([Required][StringLength(50)]string kullaniciAdi)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user = _databaseContext.Kullanici.SingleOrDefault(x => x.Id == userid);
+
+                user.kullaniciAdi = kullaniciAdi;
+                _databaseContext.SaveChanges();
+
+                ViewData["result"] = "usernameChanged";
+            }
+
+            DataLoader();
+            return View("Profile");
+        }
+
+        [HttpPost]
+        public IActionResult PasswordUpdate([Required][MinLength(8)][MaxLength(20)] string sifre)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user = _databaseContext.Kullanici.SingleOrDefault(x => x.Id == userid);
+
+                string yenisifre = MD5sifre(sifre);
+
+                user.sifre = yenisifre;
+                _databaseContext.SaveChanges();
+
+                ViewData["result"] = "passChanged";
+            }
+
+            DataLoader();
+            return View("Profile");
+        }
+
+
 
         public IActionResult Logout()
         {
