@@ -151,7 +151,7 @@ namespace HastaneApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult PasswordUpdate([Required][MinLength(8)][MaxLength(20)] string sifre)
+        public IActionResult PasswordUpdate([Required][MaxLength(20)] string sifre)
         {
             if (ModelState.IsValid)
             {

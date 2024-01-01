@@ -1,0 +1,53 @@
+﻿@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+}
+
+
+
+
+<div class="row">
+    <div class="col">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <a asp-action="Create" class="btn btn-primary btn-sm"><i class="fa fa-plus me-2"></i>Yeni Kullanıcı Ekle</a>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+       <table class="table table-hover table-sm">
+           <thead>
+               <tr>
+                   <th>Ad Soyad</th>
+                   <th>Kullanıcı Adı</th>
+                   <th>Oluşturulma Zamanı</th>
+                   <th>Rolü</th>
+                   <th></th>
+               </tr>
+           </thead>
+           <tbody>
+               @foreach (UserModel user in Model)
+               {
+                    <tr>
+                        <td>@user.AdSoyad</td>
+                        <td>@user.kullaniciAdi</td>
+                        <td>@user.Olusturmazamani</td>
+                        <td>@user.Role</td>
+                        <td class="text-end">
+                            <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-info btn-sm"><i>Düzenle</i></a>
+                            <a asp-action="Delete" asp-route-id="@user.Id" onclick="return confirm('__ @user.kullaniciAdi __ Adlı kullanıcıyı silmek istediğinize emin misiniz ?')" class="btn btn-danger btn-sm"><i>Kaldır</i></a>
+                        </td>
+                    </tr>
+               }
+           </tbody>
+       </table> 
+    </div>
+</div>

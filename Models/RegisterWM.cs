@@ -10,12 +10,12 @@ namespace HastaneApp.Models
         public string kullaniciAdi { get; set; }
 
         [Required(ErrorMessage = "Şifre giriniz")]
-        [MinLength(8, ErrorMessage = "Şifre 8 karakterden az olamaz")]
+  
         [MaxLength(20, ErrorMessage = "Şifre 20 Karakterden fazla olamaz")]
         public string sifre { get; set; }
 
         [Required(ErrorMessage = "Şifre giriniz")]
-        [MinLength(8, ErrorMessage = "Şifre 8 karakterden az olamaz")]
+     
         [MaxLength(20, ErrorMessage = "Şifre 20 Karakterden fazla olamaz")]
         [Compare(nameof(sifre))]
         public string yenidensifre { get; set; }

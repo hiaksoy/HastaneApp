@@ -1,0 +1,52 @@
+﻿@model EditUserModel
+
+@{
+    ViewData["Title"] = "Düzenleme Sayfası";
+}
+
+
+
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 text-center"> @ViewData["Title"]</h1>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="AdSoyad" class="form-label">Ad Soyad</label>
+                <input asp-for="AdSoyad" class="form-control" placeholder="Ad Soyad giriniz" />
+                <span asp-validation-for="AdSoyad" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group mb-3">
+                <label asp-for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="kullaniciAdi" class="form-control" placeholder="Kullanıcı adı giriniz" />
+                <span asp-validation-for="kullaniciAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Role" class="form-label">Rolü</label>
+                <select asp-for="Role" class="form-select">
+                    <option value="">Lütfen Seçiniz</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary d-block">Değişiklikleri Kaydet</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

@@ -10,5 +10,11 @@ namespace HastaneApp.Entity
         }
 
         public DbSet<User> Kullanici { get; set; }
+        public DbSet<Doktor> Doktorlar { get; set; }
+        public DbSet<Poliklinik> Poliklinikler { get; set; }
+
+        public DbSet<Randevu> Randevular { get; set; }
+
+
     }
 }
